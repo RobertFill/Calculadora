@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora básica</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="shortcut icon" href="./calculadora-50.png" type="image/x-icon">
+</head>
+
+<body>
+    <div class="container">
+        <div class="result"></div>
+        <div class="buttons">
+            <button class="gray" onclick="cleanAll()">AC</button>
+            <button class="gray" onclick="backOne()">C</button>
+            <button class="orange" onclick="insert('%')">%</button>
+            <button class="orange" onclick="insert('/')">/</button>
+
+            <button class="gray" onclick="insert('7')">7</button>
+            <button class="gray" onclick="insert('8')">8</button>
+            <button class="gray" onclick="insert('9')">9</button>
+            <button class="orange" onclick="insert('*')">X</button>
+
+            <button class="gray" onclick="insert('4')">4</button>
+            <button class="gray" onclick="insert('5')">5</button>
+            <button class="gray" onclick="insert('6')">6</button>
+            <button class="orange" onclick="insert('-')">-</button>
+
+            <button class="gray" onclick="insert('1')">1</button>
+            <button class="gray" onclick="insert('2')">2</button>
+            <button class="gray" onclick="insert('3')">3</button>
+            <button class="orange" onclick="insert('+')">+</button>
+
+            <button class="gray-zero" onclick="insert('0')">0</button>
+            <button class="gray" onclick="insert('.')">.</button>
+            <button class="orange" onclick="calculationResult()">=</button>
+        </div>
+    </div>
+    <script>
+        function insert(num) {
+            let number = document.querySelector('.result').innerHTML;
+            if (number.length < 10) {
+                document.querySelector('.result').innerHTML = number + num;
+                return true
+            } else {
+                return false
+            }
+
+        }
+
+        function cleanAll() {
+            document.querySelector('.result').innerHTML = ""
+        }
+        function backOne(reset) {
+            let resetResult = document.querySelector('.result').innerHTML;
+            document.querySelector('.result').innerHTML = resetResult.substring(0, resetResult.length - 1)
+
+        }
+        function calculationResult() {
+            let valorCalculate = document.querySelector('.result').innerHTML;
+
+            if (valorCalculate) {
+                document.querySelector('.result').innerHTML = eval(valorCalculate)
+            } else {
+                document.querySelector('.result').innerHTML = "";
+            }
+        }
+    </script>
+</body>
+
+</html>
